@@ -6,6 +6,7 @@
     "dev": "cross-env HOST=0.0.0.0 PORT=9000 nuxt",
     "build": "cross-env HOST=0.0.0.0 PORT=9000 nuxt build",
     "start": "cross-env HOST=0.0.0.0 PORT=9000 nuxt start",
+    "forever": "forever nuxt",
     "generate": "nuxt generate"
   },
   "dependencies": {
