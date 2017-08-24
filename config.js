@@ -6,7 +6,7 @@ module.exports = {
     port: isProd ? 80 : 9000,
     apiBasePath: isProd ? 'http://35.167.129.123/magento/magento2'
         : 'http://35.167.129.123/magento/magento2',
-    proxyApiBasePath : isProd ? 'http://0.0.0.0/api'
+    proxyApiBasePath : isProd ? 'http://94.177.196.221/api'
         : 'http://localhost:9000/api',
     serverErrorMessage:'Something went wrong..Debug cheythu nokku..',
     pageNotFoundErrorMessage:'This page could not be found..Ee page nilavil illa..',
