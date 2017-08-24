@@ -1,0 +1,19 @@
+module.exports = {
+    devConfig:{
+        ipAddress:'0.0.0.0',
+        port:9000,    
+        apiBasePath:'http://35.167.129.123/magento/magento2'
+    },
+    prodConfig:{
+        ipAddress:'0.0.0.0',
+        port:80,    
+        apiBasePath:'http://35.167.129.123/magento/magento2'
+    },
+    commonConfig:{
+        apiUrls:{
+            home:'/litmus7/cms/home',
+            browse:'/catalog/category/view/id/',
+            product:'/catalog/product/view/id/'
+        }
+    }
+}

@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "author": "",
   "scripts": {
-    "dev": "cross-env HOST=0.0.0.0 PORT=9000 nuxt",
-    "build": "cross-env HOST=0.0.0.0 PORT=9000 nuxt build",
-    "start": "cross-env HOST=0.0.0.0 PORT=9000 nuxt start",
-    "forever": "forever nuxt",
-    "generate": "nuxt generate"
+    "clean":"rimraf .nuxt",
+    "dev": "npm run clean && cross-env NODE_ENV=dev node main.js",
+    "build": "npm run clean && nuxt build",
+    "start": "npm run build && cross-env NODE_ENV=prod node main.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
     "jquery": "^3.2.1",
-    "nuxt": "^1.0.0-rc3"
+    "nuxt": "^1.0.0-rc6"
   },
   "devDependencies": {
     "cross-env": "^5.0.5",
     "node-sass": "^4.5.3",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6"
   }
 }
