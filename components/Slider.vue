@@ -6,7 +6,6 @@
 
 <script>
     import * as $ from 'jquery';
-
     export default {
         props:['images'],
         mounted(){

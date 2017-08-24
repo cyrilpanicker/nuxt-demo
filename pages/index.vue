@@ -8,19 +8,25 @@
 </template>
 
 <script>
+	import axios from 'axios';
 	import SideMenu from '~/components/SideMenu.vue';
 	import Slider from '~/components/Slider.vue';
-	import { getHome } from '~/mockApis';
 
 	export default {
 		components: {
 			SideMenu:SideMenu,
 			Slider:Slider
 		},
-		asyncData(context){
-			return getHome().then(
-				home => home,
-				error => context.error({statusCode:500,message:'Something went wrong. Entho kozhappam patti.'})
+		asyncData({ env,error }){
+			return axios.get(env.proxyApiBasePath + env.proxyApiUrls['home']).then(
+				response => response.data,
+				_error => {
+					console.log(_error);
+					error({
+						statusCode:500,
+						message:env.serverErrorMessage
+					});
+				}
 			);
 		}
 	}

@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "author": "",
   "scripts": {
-    "clean":"rimraf .nuxt",
+    "clean": "rimraf .nuxt",
     "dev": "npm run clean && cross-env NODE_ENV=dev node main.js",
     "build": "npm run clean && nuxt build",
     "start": "npm run build && cross-env NODE_ENV=prod node main.js"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jquery": "^3.2.1",

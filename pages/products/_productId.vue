@@ -14,28 +14,29 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import SideMenu from '~/components/SideMenu.vue';
     import ProductItem from '~/components/ProductItem.vue';
-    import { getProductInfo } from '~/mockApis';
     export default {
         components:{SideMenu,ProductItem},
-        asyncData({ params,error }){
-            return getProductInfo(params.productId).then(
-                productInfo => productInfo,
-                _error => {
-                    if(_error == 'not-found'){
+        asyncData({ params,error,env }){
+			return axios.get(env.proxyApiBasePath + env.proxyApiUrls['products'] + params.productId).then(
+				response => response.data,
+				_error => {
+                    if(_error && _error.response && _error.response.status == 404){
                         error({
                             statusCode:404,
-                            message:'This page could not be found.'
-                        });
+                            message:env.pageNotFoundErrorMessage
+                        });                        
                     }else{
+                        console.log(_error);
                         error({
                             statusCode:500,
-                            message:'Something went wrong. Entho kozhappam patti.'
-                        })
+                            message:env.serverErrorMessage
+                        });
                     }
-                }
-            );
+				}
+			);
         }
     }
 </script>

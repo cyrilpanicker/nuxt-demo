@@ -4,11 +4,11 @@
 
 <script>
 export default {
-    asyncData({error}){
+    asyncData({error,env}){
         error({
             statusCode:404,
-            message:'This page could not be found.'
-        })
+            message:env.pageNotFoundErrorMessage
+        });
     }
 }
 </script>

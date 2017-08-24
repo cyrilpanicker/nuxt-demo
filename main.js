@@ -1,18 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Nuxt,Builder } = require('nuxt');
-const { commonConfig,devConfig,prodConfig } = require('./config');
+const appConfig = require('./config');
 const nuxtConfig = require('./nuxt.config.js');
+const apis = require('./apis');
 
 const app = express();
-const isProd = process.env.NODE_ENV === 'prod';
-const appConfig = isProd ? Object.assign({},commonConfig,prodConfig) : Object.assign({},commonConfig,devConfig);
 
 app.use(bodyParser.json());
+app.use('/api',apis);
 
-nuxtConfig.dev = !isProd;
+nuxtConfig.dev = !appConfig.isProd;
 const nuxt = new Nuxt(nuxtConfig);
-if(!isProd){
+if(!appConfig.isProd){
     new Builder(nuxt).build().then(
         startListening,
         error => console.log(error)

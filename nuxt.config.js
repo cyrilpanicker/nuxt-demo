@@ -1,3 +1,10 @@
+const { 
+    proxyApiBasePath,
+    proxyApiUrls,
+    serverErrorMessage,
+    pageNotFoundErrorMessage
+ } = require('./config.js');
+
 module.exports = {
     css:[
         'assets/reset.scss',
@@ -8,7 +15,13 @@ module.exports = {
         middleware:'common'
     },
     build: {
-        vendor:['jquery']
+        vendor:['jquery','axios']
     },
-    plugins:[]
+    plugins:[],
+    env:{
+        proxyApiBasePath,
+        proxyApiUrls,
+        serverErrorMessage,
+        pageNotFoundErrorMessage
+    }
 };
